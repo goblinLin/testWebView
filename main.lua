@@ -1,13 +1,10 @@
 -----------------------------------------------------------------------------------------
---
+-- 本範例示範如何在App中顯示Popup Webview，更多相關資訊請參考https://docs.coronalabs.com/daily/api/type/WebView/index.html
 -- main.lua
---
------------------------------------------------------------------------------------------
-
--- 示範如何在App中顯示Popup Webview
 -- Author: Zack Lin
 -- Time: 2015/3/16
-
+-- 
+-----------------------------------------------------------------------------------------
 _SCREEN = {
 	WIDTH = display.viewableContentWidth,
 	HEIGHT = display.viewableContentHeight
