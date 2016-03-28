@@ -1,6 +1,8 @@
 -----------------------------------------------------------------------------------------
 -- 本範例示範如何在App中顯示Popup Webview，更多相關資訊請參考https://docs.coronalabs.com/daily/api/type/WebView/index.html
 -- main.lua
+-- 1.跳出式WebView，介紹showWebPopup與cancelWebPopup及其選項
+-- 2.內嵌式WebView，介紹newWebView
 -- Author: Zack Lin
 -- Time: 2015/3/16
 -- 
@@ -41,11 +43,16 @@ closeBtn.isVisible = false
 
 local myButton = widget.newButton{
 	left = _SCREEN.CENTER.X - 100,
-	top = _SCREEN.CENTER.Y - 50,
+	top = _SCREEN.CENTER.Y - 150,
 	width = 200,
 	height = 100,
 	label = "Open WebPage",
 }
+
+--內嵌式WebView
+local embededwebView = native.newWebView( display.contentCenterX, display.contentCenterY + 120, 320, 240 )
+--對某個網址進行請求
+embededwebView:request( "http://www.yahoo.com.tw/" )
 
 --==============================================================================
 --宣告事件偵聽器
@@ -66,12 +73,14 @@ local function  handleButtonEvent( evt )
 		local webView = native.showWebPopup( 0 , 0 , 320 , 436 , url ,options)
 		bottomBar.isVisible = true
 		closeBtn.isVisible = true
+		embededwebView.isVisible = false
 	end
 end
 
 function  closeBtn:tap( evt )
 	bottomBar.isVisible = false
 	closeBtn.isVisible = false
+	embededwebView.isVisible = true
 	native.cancelWebPopup()
 end
 
